@@ -27,7 +27,7 @@
 
 只有这几个单词（33个。但实际上常用的10个以内）才是语言的一部分。其他的都
 是自己或者别人给起的名字。通过认识这十个单词来认识一门语言。
-```
+```python
 if, else
 for, in
 and, or, not
@@ -59,7 +59,7 @@ def, import, as
 这部分我们会讲程序员世界的协作，讲开源运动，讲Python的流行的原因。Python
 的世界有自己的App Store。只不过这个App Store是命令行的，是任何一个程序
 员可以访问所有其他人的工作，这是世界上最重大的协作之一。
-```
+```python
   import yagmail
 
   username = 'embarazada@qq.com'
@@ -76,7 +76,7 @@ def, import, as
 
 Python是文字处理之王。这里简单的展示一下如何用简单的代码来处理文章，
 把一个初中的生词表变成一个规整的列表
-```
+```python
   s = '''内容
   内容
   内容'''
@@ -85,7 +85,7 @@ Python是文字处理之王。这里简单的展示一下如何用简单的代�
     print(s)
 ```
 ### 任务三，从网页上面拿内容下来
-```
+```python
   import requests
 
   url = 'https://zhuanlan.zhihu.com/smetalk'
@@ -95,7 +95,7 @@ Python是文字处理之王。这里简单的展示一下如何用简单的代�
   手工的任务是如何自动化的
 
 ### 任务四：从网页上获取信息并且找到自己要的部分，然后发邮件
-```
+```python
   from bs4 as BeautifulSoup
 
   soup = BeatifulSoup(response.text, 'html.parser')
@@ -110,7 +110,7 @@ Python是文字处理之王。这里简单的展示一下如何用简单的代�
   这个是最后一个任务了。我们会从微博的一个评论里面来分析词的频率，
   这个其实是对于提供者科技含量很高，对于使用者
   科技含量很低的任务，当然大多数的库都是这样的。
-```
+```python
   import jieba
 
   words = jieba.cut(content)
