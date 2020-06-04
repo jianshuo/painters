@@ -17,3 +17,4 @@ body = ['<h1>I kind of miss you. Do you want to reply me with some jokes?</h1>',
 '<h2>其实今天早上睡个懒觉也不错</h2>',
 '126.jpg']
 mail.send(to, subject, body)
+print('Msg sent to ' + to)
