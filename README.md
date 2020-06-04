@@ -99,7 +99,7 @@ Python是文字处理之王。这里简单的展示一下如何用简单的代�
 
 ### 任务三：从网页上获取信息并且找到自己要的部分，然后发邮件
 ```python
-  from bs4 as BeautifulSoup
+  from bs4 import BeautifulSoup
 
   soup = BeatifulSoup(response.text, 'html.parser')
   for title in soup.findall('h3'):
