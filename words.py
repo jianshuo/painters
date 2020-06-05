@@ -2,6 +2,10 @@ import requests
 from bs4 import BeautifulSoup
 
 url = 'https://mp.weixin.qq.com/s/41fG4qjPTbIPXGDs5IGdug'
+url = 'https://github.com/jianshuo/painters'
+url = 'https://www.zhihu.com/question/20706333'
+url = 'https://mp.weixin.qq.com/s/8fbmZz6uPTHFukgwtt2_xA'
+
 response = requests.get(url)
 
 soup = BeautifulSoup(response.text, 'html.parser')
