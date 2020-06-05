@@ -26,3 +26,5 @@ for word, occur in cnter.most_common(50):
 import wordcloud
 wc = wordcloud.WordCloud(font_path='YangRenDongZhengBangTi.ttf', width=600, height=400).generate_from_frequencies(cnter)
 wc.to_file('wc.jpg')
+import os
+os.system('open wc.jpg')
