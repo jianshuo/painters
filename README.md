@@ -16,13 +16,34 @@
 的特殊。这一部分教会大家如何运行一个Python程序。程序和电脑的关系，程序
 和程序员的关系，还有程序和这个世界的其他的程序的关系。
 
+```python
+print('****************************************')
+print('Hello World')
+print('*' * 40)
+```
+
 ### 起名字
 
 为什么传说中说“编程问题归根到底是命名问题”。在编程的时候，我们无时无刻
 不在给别人起名字。我们这一个部分会讲，在Python里面，如何用名字来装东西
 如何把句子装到名字里面。如何把名字装到其他的名字里面。以及名字和名字的
 关系。
+```python
+# 计算机科学里面最难的两件事情，一件事缓存过期问题，一件事命名问题
 
+greetings = 'Hello, World!'
+name = '小机器人笨笨'
+introduction = '我的名字是' + name
+age = '3'
+occupation = '机器人'
+bye = '*' * 20
+
+print(greetings)
+print(introduction)
+print('我' + age + '岁了')
+print('我是做' + occupation + '工作的')
+print(bye)
+```
 
 ### 学会用一个布袋子，就是列表[ ]
 
@@ -33,10 +54,16 @@
 只有这几个单词（33个。但实际上常用的10个以内）才是语言的一部分。其他的都
 是自己或者别人给起的名字。通过认识这十个单词来认识一门语言。
 ```python
-if, else
-for, in
-and, or, not
-def, import, as
+if
+else
+for
+in
+and
+or
+not
+def
+import
+as
 ```
 可以说，认识了这十个单词，你就可以说你会Python语言了。之后遇到的所有的
 名字，都是别人命名的，可以叫这个，也可以叫其他的名字。
@@ -46,6 +73,22 @@ def, import, as
 把自己的程序放在一个箱子里面，让自己用起来方便，让别人用起来方便。这里
 介绍用 def 来定义函数，来调用函数。
 
+```python
+# These are the functions
+
+def greetings(name):
+    if name == 'Jian Shuo':
+        print('Long time no see.', 'How are you ding?', name)
+    else:
+        print(name, 'How are you doing?')
+
+def greetsMyself():
+    greetings('Jian Shuo')
+
+greetings('John')
+greetsMyself()
+```
+
 ## 第二部分，不管三七二十一直接冲到深水区
 
 ### 任务一，发邮件
@@ -54,40 +97,27 @@ def, import, as
 互联网协议是专门的领域，比如SMTP等等。Python仅仅是众多的领域中间的一
 部分。看这一部分可其他的部分有什么联系。
 
-> pip install yagmail
+> pip3 install yagmail
 
 这部分我们会讲程序员世界的协作，讲开源运动，讲Python的流行的原因。Python
 的世界有自己的App Store。只不过这个App Store是命令行的，是任何一个程序
 员可以访问所有其他人的工作，这是世界上最重大的协作之一。
 ```python
-  import yagmail
+import yagmail
 
-  username = 'embarazada@qq.com'
-  passwod = 'hlnixpqgqwwpbchd'
-  server = 'smtp.qq.com'
-  mail = yagmail.SMTP(username, password, server)
+username = 'embarazada@qq.com'
+password = 'hlnixpqgqwwpbchd'
+server = 'smtp.qq.com'
+mail = yagmail.SMTP(username, password, server)
 
-  to = 'jianshuo@icloud.com'
-  subject = 'Hello Jian Shuo'
-  body = 'How are you doing? Como estas?'
-  mail.send(to, subject, body)
+to = 'jianshuo@icloud.com'
+subject = 'How are you doing today?'
+mail.send(to, subject, body)
+print('Message [' + subject + '] sent to ' + to)
+
 ```
 
-<<<<<<< HEAD
 ### 任务二，从网页上面拿内容下来
-```
-=======
-Python是文字处理之王。这里简单的展示一下如何用简单的代码来处理文章，
-把一个初中的生词表变成一个规整的列表
-```python
-  s = '''内容
-  内容
-  内容'''
-  for s in s.splitlines():
-    s = s.strip()
-    print(s)
-```
-### 任务三，从网页上面拿内容下来
 ```python
   import requests
 
@@ -98,14 +128,29 @@ Python是文字处理之王。这里简单的展示一下如何用简单的代�
   手工的任务是如何自动化的
 
 ### 任务三：从网页上获取信息并且找到自己要的部分，然后发邮件
+
 ```python
-  from bs4 as BeautifulSoup
+ import requests
+from bs4 import BeautifulSoup
 
-  soup = BeatifulSoup(response.text, 'html.parser')
-  for title in soup.findall('h3'):
-    print(title)
 
-  mail.send()
+resp = requests.get('https://s.weibo.com/realtime?q=%23姜潮妈妈婚前给麦迪娜买房%23&rd=realtime&tw=realtime&Refer=weibo_realtime')
+soup = BeautifulSoup(resp.text, 'html.parser')
+card = soup.find('div', attrs={'class': 'card-wrap'}).find('p', attrs={'class':'txt'})
+latest = card.text.replace(' ', '').replace('\n', '')
+print(latest)
+
+import yagmail
+
+username = 'embarazada@qq.com'
+password = 'hlnixpqgqwwpbchd'
+server = 'smtp.qq.com'
+mail = yagmail.SMTP(username, password, server)
+
+to = 'jianshuo@icloud.com'
+subject = 'How are you doing today?'
+mail.send(to, subject, body)
+print('Message [' + subject + '] sent to ' + to)
 ```
 
 ### 任务四，分析热词，给自己发邮件。
@@ -114,10 +159,37 @@ Python是文字处理之王。这里简单的展示一下如何用简单的代�
   这个其实是对于提供者科技含量很高，对于使用者
   科技含量很低的任务，当然大多数的库都是这样的。
 ```python
-  import jieba
+import requests
+from bs4 import BeautifulSoup
 
-  words = jieba.cut(content)
-  c = Counter(words)
+url = 'https://mp.weixin.qq.com/s/41fG4qjPTbIPXGDs5IGdug'
+url = 'https://github.com/jianshuo/painters'
+url = 'https://www.zhihu.com/question/20706333'
+url = 'https://mp.weixin.qq.com/s/8fbmZz6uPTHFukgwtt2_xA'
+
+response = requests.get(url)
+
+soup = BeautifulSoup(response.text, 'html.parser')
+content = soup.find('div', {'class': 'rich_media_content'})
+
+import jieba
+from collections import Counter
+
+stopwords = '，,。,的,我,了,是,、,在,“,”,一个,飞镖,有,也,卖,元,这个,就,盘, ,说,？,和'.split(',')
+
+words = jieba.cut(content.text)
+words = [w for w in words if w not in stopwords]
+
+cnter = Counter(words)
+for word, occur in cnter.most_common(50):
+    print(word, occur)
+
+import wordcloud
+wc = wordcloud.WordCloud(font_path='YangRenDongZhengBangTi.ttf', width=600, height=400).generate_from_frequencies(cnter)
+wc.to_file('wc.jpg')
+import os
+os.system('open wc.jpg')
+
 ```
 
 ## 第三部分：程序员的世界很好懂。
