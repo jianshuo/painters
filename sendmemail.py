@@ -3,18 +3,21 @@
 #   pip3 install yagmail
 # 使用的话，需要用
 #   import yagmail
+# This is an example for Angela
 
 import yagmail
 
-username = 'embarazada@qq.com'
-password = 'hlnixpqgqwwpbchd'
-server = 'smtp.qq.com'
+username = "embarazada@qq.com"
+password = "hlnixpqgqwwpbchd"
+server = "smtp.qq.com"
 mail = yagmail.SMTP(username, password, server)
 
-to = 'jianshuo@icloud.com'
-subject = 'How are you doing today?'
-body = ['<h1>I kind of miss you. Do you want to reply me with some jokes?</h1>',
-'<h2>其实今天早上睡个懒觉也不错</h2>',
-'126.jpg']
+to = "jianshuo@icloud.com"
+subject = "How are you doing today?"
+body = [
+    "<h1>I kind of miss you. Do you want to reply me with some jokes?</h1>",
+    "<h2>其实今天早上睡个懒觉也不错</h2>",
+    "126.jpg",
+]
 mail.send(to, subject, body)
-print('Msg sent to ' + to)
+print("Msg sent to " + to)
